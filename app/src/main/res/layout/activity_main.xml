@@ -223,8 +223,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal|center_vertical"
-                            android:textSize="@dimen/letra_segundo"
+                            android:textSize="@dimen/letra_24"
                             android:textColor="@color/fondo5"
+                            android:textStyle="bold"
                             android:paddingBottom="@dimen/padding_8"
                             android:text="Ayuda"/>
                     </LinearLayout>
