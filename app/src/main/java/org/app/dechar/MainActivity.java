@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnHistoria;
     Button btnLugares;
     Button btnVersiculos;
+    Button btnTodos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +27,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnHistoria=(Button)findViewById(R.id.btnHistorias);
         btnLugares=(Button)findViewById(R.id.btnLugares);
         btnVersiculos=(Button)findViewById(R.id.btnVersiculos);
+        btnTodos=(Button)findViewById(R.id.btnTodos);
         btnPersonajes.setOnClickListener(this);
         btnLibros.setOnClickListener(this);
         btnHistoria.setOnClickListener(this);
         btnLugares.setOnClickListener(this);
         btnVersiculos.setOnClickListener(this);
+        btnTodos.setOnClickListener(this);
         ajustarBotones();
     }
 
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout llHistorias=(LinearLayout)findViewById(R.id.llHistorias);
         llHistorias.getLayoutParams().height=width;
         LinearLayout llAyuda=(LinearLayout)findViewById(R.id.llAyuda);
-        llAyuda.getLayoutParams().height=width/2;
+        llAyuda.getLayoutParams().height=(width-16)/2;
     }
 
     public void iniciarJuego(int x){
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.btnTodos:
+                iniciarJuego(0);
+                break;
             case R.id.btnPersonaje:
                 iniciarJuego(1);
                 break;

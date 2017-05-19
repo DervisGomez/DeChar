@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.app.dechar.modelo.Palabra;
+
 import java.util.List;
 
 public class ResultadoActivity extends AppCompatActivity {
@@ -33,13 +35,13 @@ public class ResultadoActivity extends AppCompatActivity {
 
         Bundle bolsa=getIntent().getExtras();
         final int t=bolsa.getInt("x");
-        String[] acertadas= bolsa.getStringArray("acertar");
-        String[] error=bolsa.getStringArray("error");
+        long[] acertadas= bolsa.getLongArray("acertar");
+        long[] error=bolsa.getLongArray("error");
 
         ContenidoTexto contenidoTexto=new ContenidoTexto();
 
-        List<String[]> acer=contenidoTexto.getVerificar(t,acertadas);
-        List<String[]> erro=contenidoTexto.getVerificar(t,error);
+        List<Palabra> acer=contenidoTexto.getVerificar(t,acertadas);
+        List<Palabra> erro=contenidoTexto.getVerificar(t,error);
         lvAcertadas.setAdapter(new ListaTextoAdapter(ResultadoActivity.this,acer,1));
         lvErradas.setAdapter(new ListaTextoAdapter(ResultadoActivity.this,erro,0));
 

@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.app.dechar.modelo.Palabra;
+
 import java.util.List;
 
 /**
@@ -17,10 +19,10 @@ import java.util.List;
 public class ListaTextoAdapter extends BaseAdapter {
 
     private Context context;
-    private List<String[]> items;
+    private List<Palabra> items;
     private int x;
 
-    public ListaTextoAdapter(Context context, List<String[]> items, int x) {
+    public ListaTextoAdapter(Context context, List<Palabra> items, int x) {
         this.context = context;
         this.items = items;
         this.x = x;
@@ -56,7 +58,7 @@ public class ListaTextoAdapter extends BaseAdapter {
 
         TextView text=(TextView)rowView.findViewById(R.id.tvTextoTexto);
         ImageView imag=(ImageView)rowView.findViewById(R.id.ivTextoTexto);
-        text.setText(items.get(position)[1]);
+        text.setText(items.get(position).getNombre());
         if (x==1){
             imag.setImageResource(R.drawable.correcto);
         }else{

@@ -1,5 +1,11 @@
 package org.app.dechar;
 
+import org.app.dechar.modelo.Categoria;
+import org.app.dechar.modelo.CategoriaDao;
+import org.app.dechar.modelo.DAOApp;
+import org.app.dechar.modelo.Palabra;
+import org.app.dechar.modelo.PalabraDao;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,66 +15,115 @@ import java.util.List;
 public class ContenidoTexto {
     private List<String[]> texto=new ArrayList<>();
 
-    private void getPersonaje(){
-        texto.clear();
-        texto.add(new String[]{"0","David"});
-        texto.add(new String[]{"1","José"});
-        texto.add(new String[]{"2","Moises"});
-        texto.add(new String[]{"3","Juan"});
-        texto.add(new String[]{"4","Pedro"});
-        texto.add(new String[]{"5","Lucas"});
-        texto.add(new String[]{"6","María"});
-        texto.add(new String[]{"7","Jesús"});
-        texto.add(new String[]{"8","Salomon"});
-        texto.add(new String[]{"9","Jonas"});
+    public ContenidoTexto(){
+        DAOApp daoApp=new DAOApp();
+        CategoriaDao categoriaDao=daoApp.getCategoriaDao();
+        List<Categoria> categorias=new ArrayList<>();
+        categorias=categoriaDao.loadAll();
+        if (categorias.size()<1){
+            cargarCategorias();
+            cargarPalabras();
+        }
     }
-    private void getLibro(){
-        texto.clear();
-        texto.add(new String[]{"0","Genesis"});
-        texto.add(new String[]{"1","Mateo"});
-        texto.add(new String[]{"2","Moises"});
-        texto.add(new String[]{"3","Marcos"});
-        texto.add(new String[]{"4","Lucas"});
-        texto.add(new String[]{"5","Juan"});
-        texto.add(new String[]{"6","Hechos"});
-        texto.add(new String[]{"7","Romanos"});
-        texto.add(new String[]{"8","1 Corintios"});
-        texto.add(new String[]{"9","2 Corintios"});
+
+    private void cargarPalabras(){
+        DAOApp daoApp=new DAOApp();
+        PalabraDao palabraDao=daoApp.getPalabraDao();
+        List<Palabra> palabras=new ArrayList<>();
+        long c=1;
+        long x=1;
+        palabras.add(new Palabra(x,"David","",c));
+        x++;
+        palabras.add(new Palabra(x,"Salomon","",c));
+        x++;
+        palabras.add(new Palabra(x,"Elias","",c));
+        x++;
+        palabras.add(new Palabra(x,"José","",c));
+        x++;
+        palabras.add(new Palabra(x,"Abrahan","",c));
+        x++;
+        palabras.add(new Palabra(x,"Pablo","",c));
+        x++;
+        palabras.add(new Palabra(x,"Pedro","",c));
+        x++;
+        palabras.add(new Palabra(x,"Juan","",c));
+        x++;
+        palabras.add(new Palabra(x,"Timoteo","",c));
+        x++;
+        palabras.add(new Palabra(x,"Lucas","",c));
+
+        x++;
+        c++;
+        palabras.add(new Palabra(x,"Genesis","",c));
+        x++;
+        palabras.add(new Palabra(x,"Exodo","",c));
+        x++;
+        palabras.add(new Palabra(x,"Levitico","",c));
+        x++;
+        palabras.add(new Palabra(x,"Numeros","",c));
+        x++;
+        palabras.add(new Palabra(x,"Deutoronomio","",c));
+        x++;
+        palabras.add(new Palabra(x,"Mateo","",c));
+        x++;
+        palabras.add(new Palabra(x,"Marcos","",c));
+        x++;
+        palabras.add(new Palabra(x,"Lucas","",c));
+        x++;
+        palabras.add(new Palabra(x,"Juan","",c));
+        x++;
+        palabras.add(new Palabra(x,"Hechos","",c));
+
+        palabraDao.insertInTx(palabras);
+
     }
-    public List<String[]> getTexto(int x){
+
+    private void cargarCategorias(){
+        DAOApp daoApp=new DAOApp();
+        CategoriaDao categoriaDao=daoApp.getCategoriaDao();
+        List<Categoria> categorias=new ArrayList<>();
+        long x=1;
+        categorias.add(new Categoria(x,"Personajes","",true));
+        x++;
+        categorias.add(new Categoria(x,"Libros","",true));
+        x++;
+        categorias.add(new Categoria(x,"Historias","",true));
+        x++;
+        categorias.add(new Categoria(x,"Lugares","",true));
+        x++;
+        categorias.add(new Categoria(x,"Versiculos","",true));
+        x++;
+        categoriaDao.insertInTx(categorias);
+    }
+    public List<Palabra> getTexto(int x){
+        List<Palabra> palabras=new ArrayList<>();
+        DAOApp daoApp=new DAOApp();
+        PalabraDao palabraDao=daoApp.getPalabraDao();
+        long j;
         switch (x){
+            case 0:
+                palabras=palabraDao.loadAll();
+                break;
             case 1:
-                getPersonaje();
+                j=1;
+                palabras=palabraDao._queryCategoria_Palabra(j);
                 break;
             case 2:
-                getLibro();
+                j=2;
+                palabras=palabraDao._queryCategoria_Palabra(j);
                 break;
             default:
                 break;
         }
-        return texto;
+        return palabras;
     }
-    public List<String[]> getVerificar(int x,String[] item){
-        List<String[]> text=new ArrayList<>();
-        switch (x){
-            case 1:
-                getPersonaje();
-                text=extraerLista(item);
-                break;
-            case 2:
-                getLibro();
-                text=extraerLista(item);
-                break;
-            default:
-                break;
+    public List<Palabra> getVerificar(int x,long[] item){
+        List<Palabra> palabras=new ArrayList<>();
+        DAOApp daoApp=new DAOApp();
+        PalabraDao palabraDao=daoApp.getPalabraDao();
+        for (int i=0;i<item.length;i++){
+            palabras.add(palabraDao.load(item[i]));
         }
-        return text;
-    }
-    private List<String[]> extraerLista(String[] item){
-        List<String[]> text=new ArrayList<>();
-        for (int x=0;x<item.length;x++){
-            text.add(texto.get(Integer.valueOf(item[x])));
-        }
-        return text;
+        return palabras;
     }
 }

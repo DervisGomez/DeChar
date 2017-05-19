@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.app.dechar.modelo.Palabra;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -24,9 +26,9 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
     private float curX = 0, curY = 0, curZ = 0;
     private TextView txtSegundo, txtTexto;
     private RelativeLayout fondo;
-    List<String[]> texto=new ArrayList<>();
-    List<String[]> acertar=new ArrayList<>();
-    List<String[]> error=new ArrayList<>();
+    List<Palabra> texto=new ArrayList<>();
+    List<Palabra> acertar=new ArrayList<>();
+    List<Palabra> error=new ArrayList<>();
     boolean cambiar=true;
     int valor;
     int xxx=0;
@@ -46,8 +48,8 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
         int t=bolsa.getInt("x");
         ContenidoTexto contenidoTexto=new ContenidoTexto();
         texto=contenidoTexto.getTexto(t);
-        txtSegundo.setText(String.valueOf(xxx));
-        cambiarTexto();
+        //txtSegundo.setText(String.valueOf(xxx));
+        //cambiarTexto();
         //new MiTarea(1).execute();
     }
 
@@ -75,7 +77,7 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
             cambiar=false;
             Random r = new Random();
             valor= r.nextInt(texto.size());
-            txtTexto.setText(texto.get(valor)[1]);
+            txtTexto.setText(texto.get(valor).getNombre());
             fondo.setBackgroundResource(R.color.colorFondo);
         }else{
             txtTexto.setText("No hay más palabras");
@@ -115,14 +117,14 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
         Bundle bolsa=getIntent().getExtras();
         int t=bolsa.getInt("x");
         intent.putExtra("x",t);
-        String[] acer=new String[acertar.size()];
+        long[] acer=new long[acertar.size()];
         for (int x=0;x<acertar.size();x++){
-            acer[x]=acertar.get(x)[0];
+            acer[x]=acertar.get(x).getId();
         }
         intent.putExtra("acertar",acer);
-        String[] erro=new String[error.size()];
+        long[] erro=new long[error.size()];
         for (int x=0;x<error.size();x++){
-            erro[x]=error.get(x)[0];
+            erro[x]=error.get(x).getId();
         }
         intent.putExtra("error",erro);
         startActivity(intent);
