@@ -1,0 +1,237 @@
+package org.app.dechar;
+
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
+
+public class JugarActivity extends AppCompatActivity implements SensorEventListener {
+
+    private float curX = 0, curY = 0, curZ = 0;
+    private TextView txtSegundo, txtTexto;
+    private RelativeLayout fondo;
+    List<String[]> texto=new ArrayList<>();
+    List<String[]> acertar=new ArrayList<>();
+    List<String[]> error=new ArrayList<>();
+    boolean cambiar=true;
+    int valor;
+    int xxx=0;
+    int xx=6;
+    boolean iniciar=false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_jugar);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        getSupportActionBar().hide();
+        txtSegundo=(TextView)findViewById(R.id.txtSegundo);
+        txtTexto=(TextView)findViewById(R.id.txtTexto);
+        fondo=(RelativeLayout)findViewById(R.id.llFondo);
+        Bundle bolsa=getIntent().getExtras();
+        int t=bolsa.getInt("x");
+        ContenidoTexto contenidoTexto=new ContenidoTexto();
+        texto=contenidoTexto.getTexto(t);
+        txtSegundo.setText(String.valueOf(xxx));
+        cambiarTexto();
+        //new MiTarea(1).execute();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
+        List<Sensor> sensors = sm.getSensorList(Sensor.TYPE_ACCELEROMETER);
+        if (sensors.size() > 0) {
+            sm.registerListener(this, sensors.get(0), SensorManager.SENSOR_DELAY_GAME);
+
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
+        sm.unregisterListener(this);
+        super.onStop();
+    }
+
+    public void cambiarTexto(){
+        if (texto.size()>0){
+            cambiar=false;
+            Random r = new Random();
+            valor= r.nextInt(texto.size());
+            txtTexto.setText(texto.get(valor)[1]);
+            fondo.setBackgroundResource(R.color.colorFondo);
+        }else{
+            txtTexto.setText("No hay más palabras");
+            fondo.setBackgroundResource(R.color.colorFondo);
+        }
+
+    }
+
+    public void textoCorrecto(){
+        if (texto.size()>0){
+            cambiar=true;
+            acertar.add(texto.get(valor));
+            texto.remove(valor);
+            txtTexto.setText("CORRECTO");
+            fondo.setBackgroundResource(R.color.colorAcertar);
+        }else{
+            txtTexto.setText("No hay más palabras");
+            fondo.setBackgroundResource(R.color.colorFondo);
+        }
+    }
+
+    public void textoError(){
+        if (texto.size()>0){
+            cambiar=true;
+            error.add(texto.get(valor));
+            texto.remove(valor);
+            txtTexto.setText("SIGUIENTE");
+            fondo.setBackgroundResource(R.color.colorErrar);
+        }else{
+            txtTexto.setText("No hay más palabras");
+            fondo.setBackgroundResource(R.color.colorFondo);
+        }
+    }
+
+    public void llamarResultado(){
+        Intent intent=new Intent(JugarActivity.this,ResultadoActivity.class);
+        Bundle bolsa=getIntent().getExtras();
+        int t=bolsa.getInt("x");
+        intent.putExtra("x",t);
+        String[] acer=new String[acertar.size()];
+        for (int x=0;x<acertar.size();x++){
+            acer[x]=acertar.get(x)[0];
+        }
+        intent.putExtra("acertar",acer);
+        String[] erro=new String[error.size()];
+        for (int x=0;x<error.size();x++){
+            erro[x]=error.get(x)[0];
+        }
+        intent.putExtra("error",erro);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        synchronized (this) {
+            curX = event.values[0];
+            curY = event.values[1];
+            curZ = event.values[2];
+
+            Calendar calendar=Calendar.getInstance();
+            int x=calendar.getTime().getSeconds();
+
+            if (x!=xxx){
+                if (iniciar){
+                    xxx=x;
+                    xx--;
+                    txtSegundo.setText(String.valueOf(xx));
+                    if (xx==0){
+                        txtTexto.setText("FIN");
+                        iniciar=false;
+                    }
+                }else{
+                    if (xx==0){
+                        xx--;
+                        llamarResultado();
+                    }else{
+                        if (xx>0){
+                            xxx=x;
+                            xx--;
+                            txtSegundo.setText("");
+                            txtTexto.setText(String.valueOf(xx));
+                            if (xx==0){
+                                xx=30;
+                                iniciar=true;
+                                cambiarTexto();
+                                txtSegundo.setText(String.valueOf(xx));
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            if (iniciar){
+                if (curZ>8){
+                    if (!cambiar){
+                        textoCorrecto();
+                    }
+                }else if(curZ<-6){
+                    if (!cambiar){
+                        textoError();
+                    }
+                }else if(curZ>-5&&curZ<7){
+                    if (cambiar){
+                        cambiarTexto();
+                    }
+
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+
+    public void segundos(){
+        xxx++;
+        txtSegundo.setText(String.valueOf(xxx));
+        if (xxx<60){
+            //new MiTarea(1).execute();
+        }
+    }
+
+    private class MiTarea extends AsyncTask<String, Float, String> {
+        private int x;
+
+        public MiTarea(int x){
+            this.x=x;
+        }
+        protected void onPreExecute() {
+
+        }
+        protected String doInBackground(String... urls) {
+            String responce="";
+            try
+            {
+                int i=0;
+                segundos();
+                //while(i<x){
+                    Thread.sleep(1000);
+
+                    i++;
+                //}
+            }catch(InterruptedException e){}
+            return responce;
+        }
+        protected void onProgressUpdate (Float... valores) {
+
+        }
+        protected void onPostExecute(String tiraJson) {
+            segundos();
+
+        }
+
+    }
+}

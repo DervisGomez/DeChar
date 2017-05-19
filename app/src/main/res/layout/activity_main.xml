@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:scrollbars="vertical"
+    android:background="@color/colorFondo"
+    android:weightSum="2"
+    tools:context="org.app.dechar.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="2"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llPresentacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textSize="@dimen/letra_24"
+                            android:textStyle="bold"
+                            android:textColor="@color/fondo5"
+                            android:paddingBottom="@dimen/padding_8"
+                            android:text="Charadas"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llPersonaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimary"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnPersonaje"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/personas"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Personaje"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llHistorias"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnHistorias"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/libros"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Historias"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llVericulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimary"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnVersiculos"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/versos"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Versiculos"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llTodos"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimary"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnTodos"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/simbolos"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Todos"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llLibros"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnLibros"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/biblias"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Libros"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llLugares"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimary"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnLugares"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/marcadors"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Lugares"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llAyuda"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textSize="@dimen/letra_segundo"
+                            android:textColor="@color/fondo5"
+                            android:paddingBottom="@dimen/padding_8"
+                            android:text="Ayuda"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

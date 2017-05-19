@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#004A91</color>
+    <color name="colorPrimaryDark">#28166F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorFondo">#2C92CC</color>
+    <color name="colorAcertar">#55FF85</color>
+    <color name="colorErrar">#EC4646</color>
+
+    <color name="fondo5">#ffffff</color>
+    <color name="fondo6">#DADADA</color>
+
+</resources>
