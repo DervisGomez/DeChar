@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Display display = getWindowManager().getDefaultDisplay();
         int width = (display.getWidth()-48)/2;
         LinearLayout llPresentacion=(LinearLayout)findViewById(R.id.llPresentacion);
-        llPresentacion.getLayoutParams().height=width/2;
+        llPresentacion.getLayoutParams().height=(width-16)/2;
         LinearLayout llPersonaje=(LinearLayout)findViewById(R.id.llPersonaje);
         llPersonaje.getLayoutParams().height=width;
         LinearLayout llTodos=(LinearLayout)findViewById(R.id.llTodos);
