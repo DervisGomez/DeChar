@@ -76,9 +76,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnLibros:
                 iniciarJuego(2);
                 break;
-            case R.id.btnHistorias:
-                break;
             case R.id.btnLugares:
+                iniciarJuego(3);
+                break;
+            case R.id.btnHistorias:
                 break;
             case R.id.btnVersiculos:
                 break;
