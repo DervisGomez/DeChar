@@ -8,4 +8,5 @@
     <dimen name="letra_20">20dp</dimen>
     <dimen name="letra_24">24dp</dimen>
     <dimen name="icono">40dp</dimen>
+    <dimen name="tamaño_64">64dp</dimen>
 </resources>

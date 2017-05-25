@@ -161,7 +161,7 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
                             txtSegundo.setText("");
                             txtTexto.setText(String.valueOf(xx));
                             if (xx==0){
-                                xx=30;
+                                xx=59;
                                 iniciar=true;
                                 cambiarTexto();
                                 txtSegundo.setText(String.valueOf(xx));
@@ -193,47 +193,6 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
-
-    }
-
-    public void segundos(){
-        xxx++;
-        txtSegundo.setText(String.valueOf(xxx));
-        if (xxx<60){
-            //new MiTarea(1).execute();
-        }
-    }
-
-    private class MiTarea extends AsyncTask<String, Float, String> {
-        private int x;
-
-        public MiTarea(int x){
-            this.x=x;
-        }
-        protected void onPreExecute() {
-
-        }
-        protected String doInBackground(String... urls) {
-            String responce="";
-            try
-            {
-                int i=0;
-                segundos();
-                //while(i<x){
-                    Thread.sleep(1000);
-
-                    i++;
-                //}
-            }catch(InterruptedException e){}
-            return responce;
-        }
-        protected void onProgressUpdate (Float... valores) {
-
-        }
-        protected void onPostExecute(String tiraJson) {
-            segundos();
-
-        }
 
     }
 }

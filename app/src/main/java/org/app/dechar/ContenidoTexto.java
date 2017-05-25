@@ -41,6 +41,10 @@ public class ContenidoTexto {
         x++;
         categorias.add(new Categoria(x,"Versiculos","",true));
         x++;
+        categorias.add(new Categoria(x,"Prueba1","",false));
+        x++;
+        categorias.add(new Categoria(x,"Prueba2","",false));
+        x++;
         categoriaDao.insertInTx(categorias);
     }
     public List<Palabra> getTexto(int x){
@@ -50,6 +54,12 @@ public class ContenidoTexto {
         long j;
         switch (x){
             case 0:
+                CategoriaDao categoriaDao=daoApp.getCategoriaDao();
+                List<Categoria> categorias=categoriaDao.queryBuilder().where(CategoriaDao.Properties.Admin.in(true)).list();
+                for (int i=0;i<categorias.size();i++){
+                    List<Palabra> palabras1=palabraDao.queryBuilder().where(PalabraDao.Properties.IdCategoriaPalabra.in(categorias.get(i).getId())).list();
+                    palabras.addAll(palabras1);
+                }
                 palabras=palabraDao.loadAll();
                 break;
             case 1:

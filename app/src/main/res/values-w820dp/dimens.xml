@@ -9,4 +9,5 @@
     <dimen name="letra_20">33dp</dimen>
     <dimen name="letra_24">40dp</dimen>
     <dimen name="icono">66dp</dimen>
+    <dimen name="tamaño_64">106dp</dimen>
 </resources>

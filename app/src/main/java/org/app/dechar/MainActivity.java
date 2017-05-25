@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnLugares;
     Button btnVersiculos;
     Button btnTodos;
+    Button btnNuevo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +29,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLugares=(Button)findViewById(R.id.btnLugares);
         btnVersiculos=(Button)findViewById(R.id.btnVersiculos);
         btnTodos=(Button)findViewById(R.id.btnTodos);
+        btnNuevo=(Button)findViewById(R.id.btnNuevo);
         btnPersonajes.setOnClickListener(this);
         btnLibros.setOnClickListener(this);
         btnHistoria.setOnClickListener(this);
         btnLugares.setOnClickListener(this);
         btnVersiculos.setOnClickListener(this);
         btnTodos.setOnClickListener(this);
+        btnNuevo.setOnClickListener(this);
         ajustarBotones();
     }
 
@@ -54,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         llVersiculos.getLayoutParams().height=width;
         LinearLayout llHistorias=(LinearLayout)findViewById(R.id.llHistorias);
         llHistorias.getLayoutParams().height=width;
+        LinearLayout llNuevo=(LinearLayout)findViewById(R.id.llNuevo);
+        llNuevo.getLayoutParams().height=width;
+        LinearLayout llCualquier=(LinearLayout)findViewById(R.id.llCualquiera);
+        llCualquier.getLayoutParams().height=width;
         LinearLayout llAyuda=(LinearLayout)findViewById(R.id.llAyuda);
         llAyuda.getLayoutParams().height=(width-16)/2;
     }
@@ -82,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnHistorias:
                 break;
             case R.id.btnVersiculos:
+                break;
+            case R.id.btnNuevo:
+                Intent intent=new Intent(MainActivity.this,MisCategoriasActivity.class);
+                startActivity(intent);
                 break;
         }
     }
