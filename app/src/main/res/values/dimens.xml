@@ -5,8 +5,11 @@
     <dimen name="letra_texto">72dp</dimen>
     <dimen name="letra_segundo">30dp</dimen>
     <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
     <dimen name="letra_20">20dp</dimen>
     <dimen name="letra_24">24dp</dimen>
+    <dimen name="letra_18">18dp</dimen>
+    <dimen name="boton_42">48dp</dimen>
     <dimen name="icono">40dp</dimen>
     <dimen name="tamaño_64">64dp</dimen>
 </resources>

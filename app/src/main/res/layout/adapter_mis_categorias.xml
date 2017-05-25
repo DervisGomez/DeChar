@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="hola"
+        android:textColor="@color/fondo5"
         android:textSize="@dimen/letra_20"
         />
 </LinearLayout>

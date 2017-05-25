@@ -3,17 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     android:background="@color/colorFondo"
     tools:context="org.app.dechar.MisCategoriasActivity">
 
-    <ListView
-        android:id="@+id/lvCategorias"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnEditarCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/fondo5"
+                android:layout_marginRight="1dp"
+                android:text="Editar"/>
+            <Button
+                android:id="@+id/btnNuevaCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/fondo5"
+                android:text="Nueva"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lvCategorias"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></ListView>
+
+    </LinearLayout>
+
+
     <TextView
         android:id="@+id/tvNoHay"
         android:layout_width="match_parent"
@@ -22,6 +52,7 @@
         android:textSize="@dimen/letra_24"
         android:gravity="center_horizontal"
         android:textColor="@color/fondo5"
+        android:padding="@dimen/padding_8"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

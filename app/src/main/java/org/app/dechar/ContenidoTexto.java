@@ -41,10 +41,6 @@ public class ContenidoTexto {
         x++;
         categorias.add(new Categoria(x,"Versiculos","",true));
         x++;
-        categorias.add(new Categoria(x,"Prueba1","",false));
-        x++;
-        categorias.add(new Categoria(x,"Prueba2","",false));
-        x++;
         categoriaDao.insertInTx(categorias);
     }
     public List<Palabra> getTexto(int x){
@@ -75,9 +71,17 @@ public class ContenidoTexto {
                 palabras=palabraDao._queryCategoria_Palabra(j);
                 break;
             default:
+                j=x;
+                palabras=palabraDao._queryCategoria_Palabra(j);
                 break;
         }
         return palabras;
+    }
+    public List<Categoria> getMisCategoria(){
+        DAOApp daoApp=new DAOApp();
+        CategoriaDao categoriaDao=daoApp.getCategoriaDao();
+        List<Categoria> categorias=categoriaDao.queryBuilder().where(CategoriaDao.Properties.Admin.in(false)).list();
+        return categorias;
     }
     public List<Palabra> getVerificar(int x,long[] item){
         List<Palabra> palabras=new ArrayList<>();

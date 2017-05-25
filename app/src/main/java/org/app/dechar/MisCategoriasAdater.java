@@ -56,7 +56,7 @@ public class MisCategoriasAdater extends BaseAdapter {
 
         TextView titulo=(TextView) rowView.findViewById(R.id.tvTituloList);
         TextView id=(TextView)rowView.findViewById(R.id.tvNumeroList);
-        id.setText(position+1);
+        id.setText(String.valueOf(position+1));
         titulo.setText(items.get(position).getNombre());
 
         // Set data into the view
