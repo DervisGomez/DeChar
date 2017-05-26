@@ -36,6 +36,7 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
     Palabra palabra=new Palabra();
     long categoria;
     int edita=-1;
+    boolean cerrar=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,10 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
         if (categoria<1){
 
         }else{
+            if (categoria<6){
+                btnEliminar.setVisibility(View.GONE);
+                btnGuardar.setVisibility(View.GONE);
+            }
             buscarCategoria();
         }
     }
@@ -118,7 +123,13 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
         switch (item.getItemId()) {
             case android.R.id.home: //hago un case por si en un futuro agrego mas opciones
                 Log.i("ActionBar", "Atrás!");
-                finish();
+                if (cerrar){
+                    finish();
+                }else{
+                    rlNuevaCategoria.setVisibility(View.GONE);
+                    cerrar=true;
+                }
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -167,6 +178,7 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
         DAOApp daoApp=new DAOApp();
         switch (view.getId()){
             case R.id.btnSiguiente:
+                cerrar=true;
                 String cate=etNombreCategoria.getText().toString();
                 if (cate.length()>0){
                     if (categoria<0){
@@ -195,11 +207,11 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
 
                 break;
             case R.id.btnGuardarCategoria:
+                cerrar=false;
                 rlNuevaCategoria.setVisibility(View.VISIBLE);
                 CategoriaDao categoriaDao=daoApp.getCategoriaDao();
                 Categoria categoria1=categoriaDao.load(categoria);
                 etNombreCategoria.setText(categoria1.getNombre());
-
                 break;
             case R.id.btnAgregarPalabra:
                 String palab=etNuevaPalabra.getText().toString();

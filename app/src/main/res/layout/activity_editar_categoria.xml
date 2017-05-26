@@ -10,6 +10,15 @@
     <ListView
         android:id="@+id/lvCategoriasEditar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="0dp"
+        android:layout_weight="1"></ListView>
+    <Button
+        android:id="@+id/btnRestablecer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Restablecer categorias"
+        android:textColor="@color/fondo5"
+        android:textSize="@dimen/padding_16"/>
 
 </LinearLayout>

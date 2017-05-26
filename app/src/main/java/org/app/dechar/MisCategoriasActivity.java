@@ -56,6 +56,7 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
                 }
             });
         }else {
+            tvNoAun.setVisibility(View.VISIBLE);
             lvCategorias.setVisibility(View.GONE);
         }
     }

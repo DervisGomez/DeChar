@@ -12,6 +12,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ListView
+            android:id="@+id/lvCategorias"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></ListView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/colorPrimary"
                 android:textColor="@color/fondo5"
                 android:layout_marginRight="1dp"
                 android:text="Editar"/>
@@ -30,16 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/colorPrimaryDark"
-                android:textColor="@color/fondo5"
+                android:background="@color/colorAcertar"
                 android:text="Nueva"/>
         </LinearLayout>
-
-        <ListView
-            android:id="@+id/lvCategorias"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            ></ListView>
 
     </LinearLayout>
 
