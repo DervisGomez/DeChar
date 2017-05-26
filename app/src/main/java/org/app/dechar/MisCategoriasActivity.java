@@ -79,14 +79,18 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
+        long x=-1;
         switch (view.getId()){
             case R.id.btnNuevaCategoria:
                 Intent intent=new Intent(MisCategoriasActivity.this,PalabraCategoriaActivity.class);
-                long x=-1;
+
                 intent.putExtra("categoria",x);
                 startActivityForResult(intent,1);
                 break;
             case R.id.btnEditarCategoria:
+                Intent intent1=new Intent(MisCategoriasActivity.this,EditarCategoriaActivity.class);
+                intent1.putExtra("categoria",x);
+                startActivityForResult(intent1,1);
                 break;
         }
     }

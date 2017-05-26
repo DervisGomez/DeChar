@@ -12,14 +12,17 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".JugarActivity" />
         <activity android:name=".ResultadoActivity" />
-        <activity android:name=".MisCategoriasActivity"
-            android:label="Categorias"/>
-        <activity android:name=".PalabraCategoriaActivity"></activity>
+        <activity
+            android:name=".MisCategoriasActivity"
+            android:label="Categorias" />
+        <activity android:name=".PalabraCategoriaActivity" />
+        <activity android:name=".EditarCategoriaActivity"></activity>
     </application>
 
 </manifest>
