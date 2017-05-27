@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="org.app.dechar.DesarrolladorActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_16"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ing. Dervis Gómez"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/letra_segundo"
+                android:textColor="@color/colorPrimaryDark"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Desarrollador"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/letra_20"
+                android:textColor="#444"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/letra_segundo"
+                android:text="dervisgomez77@gmail.com"
+                android:textSize="@dimen/letra_24"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorPrimary"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Correo"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/letra_20"
+                android:textColor="#444"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/letra_segundo"
+                android:text="+58 416 291 4662"
+                android:textSize="@dimen/letra_24"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorPrimary"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Célular"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/letra_20"
+                android:textColor="#444"/>
+
+        </LinearLayout>
+
+</RelativeLayout>

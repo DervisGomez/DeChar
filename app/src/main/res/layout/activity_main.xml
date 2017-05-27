@@ -125,6 +125,89 @@
                         android:paddingBottom="@dimen/padding_8"
                         android:text="Versiculos"/>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llNuevo"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnNuevo"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/marcadors"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Nuevo"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llLibros"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimary"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnLibros"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/biblias"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Libros"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llLugares"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnLugares"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/padding_8"
+                        android:background="@drawable/marcadors"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textSize="@dimen/letra_20"
+                        android:textColor="@color/fondo5"
+                        android:paddingBottom="@dimen/padding_8"
+                        android:text="Lugares"/>
+
+                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/llCualquiera"
                     android:layout_width="match_parent"
@@ -149,20 +232,12 @@
                         android:text="Mis Categoria"/>
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
                 <LinearLayout
                     android:id="@+id/llTodos"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_margin="8dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryDark"
                     android:orientation="vertical">
                     <Button
                         android:id="@+id/btnTodos"
@@ -182,85 +257,11 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/llLibros"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:orientation="vertical">
-                    <Button
-                        android:id="@+id/btnLibros"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_margin="@dimen/padding_8"
-                        android:background="@drawable/biblias"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:textSize="@dimen/letra_20"
-                        android:textColor="@color/fondo5"
-                        android:paddingBottom="@dimen/padding_8"
-                        android:text="Libros"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llLugares"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:background="@color/colorPrimary"
-                    android:orientation="vertical">
-                    <Button
-                        android:id="@+id/btnLugares"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_margin="@dimen/padding_8"
-                        android:background="@drawable/marcadors"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:textSize="@dimen/letra_20"
-                        android:textColor="@color/fondo5"
-                        android:paddingBottom="@dimen/padding_8"
-                        android:text="Lugares"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llNuevo"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:background="@color/colorPrimary"
-                    android:orientation="vertical">
-                    <Button
-                        android:id="@+id/btnNuevo"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_margin="@dimen/padding_8"
-                        android:background="@drawable/marcadors"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:textSize="@dimen/letra_20"
-                        android:textColor="@color/fondo5"
-                        android:paddingBottom="@dimen/padding_8"
-                        android:text="Nuevo"/>
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/llAyuda"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="8dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/colorPrimary"
                     android:orientation="vertical">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -269,6 +270,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvAplicacion"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal|center_vertical"
@@ -276,7 +278,7 @@
                             android:textColor="@color/fondo5"
                             android:textStyle="bold"
                             android:paddingBottom="@dimen/padding_8"
-                            android:text="Ayuda"/>
+                            android:text="Aplicación"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

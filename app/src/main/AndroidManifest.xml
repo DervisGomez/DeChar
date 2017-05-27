@@ -22,7 +22,8 @@
             android:name=".MisCategoriasActivity"
             android:label="Categorias" />
         <activity android:name=".PalabraCategoriaActivity" />
-        <activity android:name=".EditarCategoriaActivity"></activity>
+        <activity android:name=".EditarCategoriaActivity" />
+        <activity android:name=".DesarrolladorActivity"></activity>
     </application>
 
 </manifest>

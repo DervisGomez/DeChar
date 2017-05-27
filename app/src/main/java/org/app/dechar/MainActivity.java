@@ -7,6 +7,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnVersiculos;
     Button btnTodos;
     Button btnNuevo;
+    TextView tvAplicacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnVersiculos=(Button)findViewById(R.id.btnVersiculos);
         btnTodos=(Button)findViewById(R.id.btnTodos);
         btnNuevo=(Button)findViewById(R.id.btnNuevo);
+        tvAplicacion=(TextView)findViewById(R.id.tvAplicacion);
         btnPersonajes.setOnClickListener(this);
         btnLibros.setOnClickListener(this);
         btnHistoria.setOnClickListener(this);
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnVersiculos.setOnClickListener(this);
         btnTodos.setOnClickListener(this);
         btnNuevo.setOnClickListener(this);
+        tvAplicacion.setOnClickListener(this);
         ajustarBotones();
     }
 
@@ -93,6 +97,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnNuevo:
                 Intent intent=new Intent(MainActivity.this,MisCategoriasActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.tvAplicacion:
+                Intent intent1=new Intent(MainActivity.this,DesarrolladorActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
