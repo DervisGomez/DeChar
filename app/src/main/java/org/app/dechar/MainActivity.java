@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnTodos;
     Button btnNuevo;
     TextView tvAplicacion;
+    TextView tvAyuda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTodos=(Button)findViewById(R.id.btnTodos);
         btnNuevo=(Button)findViewById(R.id.btnNuevo);
         tvAplicacion=(TextView)findViewById(R.id.tvAplicacion);
+        tvAyuda=(TextView)findViewById(R.id.tvAyuda);
         btnPersonajes.setOnClickListener(this);
         btnLibros.setOnClickListener(this);
         btnHistoria.setOnClickListener(this);
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTodos.setOnClickListener(this);
         btnNuevo.setOnClickListener(this);
         tvAplicacion.setOnClickListener(this);
+        tvAyuda.setOnClickListener(this);
         ajustarBotones();
     }
 
@@ -101,6 +104,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tvAplicacion:
                 Intent intent1=new Intent(MainActivity.this,DesarrolladorActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.tvAyuda:
+                Intent intent2=new Intent(MainActivity.this,AyudaActivity.class);
+                startActivity(intent2);
                 break;
         }
     }

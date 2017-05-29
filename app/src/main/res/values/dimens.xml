@@ -12,4 +12,6 @@
     <dimen name="boton_42">48dp</dimen>
     <dimen name="icono">40dp</dimen>
     <dimen name="tamaño_64">64dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 </resources>
