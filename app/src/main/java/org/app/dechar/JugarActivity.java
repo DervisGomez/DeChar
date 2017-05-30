@@ -173,15 +173,15 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
             }
 
             if (iniciar){
-                if (curZ>8){
+                if (curZ>9){
                     if (!cambiar){
                         textoCorrecto();
                     }
-                }else if(curZ<-6){
+                }else if(curZ<-7){
                     if (!cambiar){
                         textoError();
                     }
-                }else if(curZ>-5&&curZ<7){
+                }else if(curZ>-4&&curZ<6){
                     if (cambiar){
                         cambiarTexto();
                     }

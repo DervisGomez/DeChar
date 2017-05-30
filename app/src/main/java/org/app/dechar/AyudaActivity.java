@@ -18,7 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.view.animation.LinearInterpolator;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.List;
 
 import static android.support.v4.view.ViewCompat.animate;
 
@@ -46,10 +49,12 @@ public class AyudaActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        Bundle bolsa=getIntent().getExtras();
+        int ayu=bolsa.getInt("ayuda");
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),ayu);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -135,7 +140,8 @@ public class AyudaActivity extends AppCompatActivity {
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String ARG_SECTION_NUMBER = "section_number";
+        private static final String AYUDA = "Ayuda";
+        private static final String COLOR = "Color";
 
         public PlaceholderFragment() {
         }
@@ -144,10 +150,11 @@ public class AyudaActivity extends AppCompatActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
+        public static PlaceholderFragment newInstance(String ayuda,int color) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            args.putString(AYUDA, ayuda);
+            args.putInt(COLOR, color);
             fragment.setArguments(args);
             return fragment;
         }
@@ -157,7 +164,25 @@ public class AyudaActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_ayuda, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            LinearLayout fragment=(LinearLayout)rootView.findViewById(R.id.fragment);
+            switch (getArguments().getInt(COLOR)){
+                case 0:
+                    fragment.setBackgroundResource(R.color.colorFondo);
+                    break;
+                case 1:
+                    fragment.setBackgroundResource(R.color.colorPrimary);
+                    break;
+                case 2:
+                    fragment.setBackgroundResource(R.color.colorAcertar);
+                    break;
+                case 3:
+                    fragment.setBackgroundResource(R.color.colorErrar);
+                    break;
+                case 4:
+                    fragment.setBackgroundResource(R.color.colorFondo);
+                    break;
+            }
+            textView.setText( getArguments().getString(AYUDA));
             return rootView;
         }
     }
@@ -167,16 +192,20 @@ public class AyudaActivity extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        String[] ayuda;
+        int[] colores;
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        public SectionsPagerAdapter(FragmentManager fm,int ayu) {
             super(fm);
+            ContenidoTexto contenidoTexto=new ContenidoTexto();
+            ayuda=contenidoTexto.getAyuda(ayu);
         }
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(ayuda[position],position);
         }
 
         @Override

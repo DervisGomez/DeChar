@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import org.app.dechar.modelo.Categoria;
 import org.app.dechar.modelo.CategoriaDao;
@@ -19,24 +20,31 @@ import org.app.dechar.modelo.PalabraDao;
 
 import java.util.List;
 
-public class EditarCategoriaActivity extends AppCompatActivity {
+public class EditarCategoriaActivity extends AppCompatActivity implements View.OnClickListener{
 
     ListView lvCategoria;
     Button btnRestablecer;
+    Button btnConfi;
+    Button btnVolver;
+    Button btnRegresar;
+    RelativeLayout rlEditar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_categoria);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
         lvCategoria=(ListView)findViewById(R.id.lvCategoriasEditar);
         btnRestablecer=(Button)findViewById(R.id.btnRestablecer);
-        btnRestablecer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restablecerCategoria();
-            }
-        });
+        btnConfi=(Button)findViewById(R.id.btnConfigEditarCategoria);
+        btnVolver=(Button)findViewById(R.id.btnVolverMenuEditarCategoria);
+        btnRegresar=(Button)findViewById(R.id.btnRegresarEditarCategoria);
+        btnRestablecer.setOnClickListener(this);
+        rlEditar=(RelativeLayout)findViewById(R.id.rlEditarCategoria);
+        btnConfi.setOnClickListener(this);
+        btnVolver.setOnClickListener(this);
+        btnRegresar.setOnClickListener(this);
+        rlEditar.setVisibility(View.GONE);
         cargarLista();
     }
 
@@ -69,7 +77,7 @@ public class EditarCategoriaActivity extends AppCompatActivity {
         DAOApp daoApp=new DAOApp();
         CategoriaDao categoriaDao=daoApp.getCategoriaDao();
         List<Categoria> categorias=categoriaDao.loadAll();
-        lvCategoria.setAdapter(new MisCategoriasAdater(EditarCategoriaActivity.this,categorias));
+        lvCategoria.setAdapter(new EditarCategoriasAdater(EditarCategoriaActivity.this,categorias));
         lvCategoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
@@ -95,6 +103,24 @@ public class EditarCategoriaActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btnRestablecer:
+                restablecerCategoria();
+                break;
+            case R.id.btnVolverMenuEditarCategoria:
+                finish();
+                break;
+            case R.id.btnRegresarEditarCategoria:
+                rlEditar.setVisibility(View.GONE);
+                break;
+            case R.id.btnConfigEditarCategoria:
+                rlEditar.setVisibility(View.VISIBLE);
+                break;
         }
     }
 }

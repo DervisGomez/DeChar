@@ -9,7 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.app.dechar.modelo.Categoria;
@@ -23,6 +25,10 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
     TextView tvNoAun;
     Button btnNueva;
     Button btnEditar;
+    Button btnmenu;
+    Button btnConfig;
+    Button btnRegresar;
+    RelativeLayout rlMiscategoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +36,19 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_mis_categorias);
         lvCategorias=(ListView)findViewById(R.id.lvCategorias);
         tvNoAun=(TextView)findViewById(R.id.tvNoHay);
+        getSupportActionBar().hide();
         btnNueva=(Button)findViewById(R.id.btnNuevaCategoria);
         btnEditar=(Button)findViewById(R.id.btnEditarCategoria);
+        btnRegresar=(Button)findViewById(R.id.btnRegresarMisCategorias);
+        btnConfig=(Button)findViewById(R.id.btnConfigMisCategorias);
+        btnmenu=(Button)findViewById(R.id.btnVolverMenu);
+        rlMiscategoria=(RelativeLayout) findViewById(R.id.rlMisCategorias);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnNueva.setOnClickListener(this);
         btnEditar.setOnClickListener(this);
+        btnRegresar.setOnClickListener(this);
+        btnConfig.setOnClickListener(this);
+        btnmenu.setOnClickListener(this);
         cargarLista();
 
     }
@@ -43,8 +57,8 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
         ContenidoTexto contenidoTexto=new ContenidoTexto();
         List<Categoria> categorias=contenidoTexto.getMisCategoria();
         if (categorias.size()>0){
-            tvNoAun.setVisibility(View.GONE);
-            lvCategorias.setVisibility(View.VISIBLE);
+            rlMiscategoria.setVisibility(View.GONE);
+            btnRegresar.setVisibility(View.VISIBLE);
             lvCategorias.setAdapter(new MisCategoriasAdater(MisCategoriasActivity.this,categorias));
             lvCategorias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -56,8 +70,8 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
                 }
             });
         }else {
-            tvNoAun.setVisibility(View.VISIBLE);
-            lvCategorias.setVisibility(View.GONE);
+            rlMiscategoria.setVisibility(View.VISIBLE);
+            btnRegresar.setVisibility(View.GONE);
         }
     }
 
@@ -84,7 +98,6 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
         switch (view.getId()){
             case R.id.btnNuevaCategoria:
                 Intent intent=new Intent(MisCategoriasActivity.this,PalabraCategoriaActivity.class);
-
                 intent.putExtra("categoria",x);
                 startActivityForResult(intent,1);
                 break;
@@ -92,6 +105,15 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
                 Intent intent1=new Intent(MisCategoriasActivity.this,EditarCategoriaActivity.class);
                 intent1.putExtra("categoria",x);
                 startActivityForResult(intent1,1);
+                break;
+            case R.id.btnVolverMenu:
+                finish();
+                break;
+            case R.id.btnConfigMisCategorias:
+                rlMiscategoria.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btnRegresarMisCategorias:
+                rlMiscategoria.setVisibility(View.GONE);
                 break;
         }
     }

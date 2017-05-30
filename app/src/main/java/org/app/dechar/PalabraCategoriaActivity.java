@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.app.dechar.modelo.Categoria;
 import org.app.dechar.modelo.CategoriaDao;
@@ -37,6 +38,12 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
     long categoria;
     int edita=-1;
     boolean cerrar=true;
+    Button regresarNueva;
+    Button regresarPalabra;
+    Button config;
+    Button volver;
+    TextView nombreCategoria;
+    RelativeLayout rlPalabra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +58,21 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
         etNombreCategoria=(EditText)findViewById(R.id.etNombreCategoria);
         btnEliminarAgregar=(Button)findViewById(R.id.btnCancelarAgregar);
         btnSiguiente=(Button)findViewById(R.id.btnSiguiente);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        regresarNueva=(Button)findViewById(R.id.btnRegresarNueva);
+        regresarPalabra=(Button)findViewById(R.id.btnRegresarPalabra);
+        config=(Button)findViewById(R.id.btnConfigPalabra);
+        volver=(Button)findViewById(R.id.btnVolverMenuPalabra);
+        nombreCategoria=(TextView)findViewById(R.id.tvNombreCategorias);
+        rlPalabra=(RelativeLayout)findViewById(R.id.rlpalabraCategoria);
+        regresarNueva.setOnClickListener(this);
+        regresarPalabra.setOnClickListener(this);
+        config.setOnClickListener(this);
+        volver.setOnClickListener(this);
+        rlPalabra.setVisibility(View.GONE);
+        getSupportActionBar().hide();
         btnNueva.setOnClickListener(this);
         btnEliminar.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
-        btnSiguiente.setOnClickListener(this);
         btnSiguiente.setOnClickListener(this);
         btnEliminarAgregar.setOnClickListener(this);
         Bundle bolsa=getIntent().getExtras();
@@ -85,7 +102,8 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
         DAOApp daoApp=new DAOApp();
         CategoriaDao categoriaDao=daoApp.getCategoriaDao();
         Categoria categori=categoriaDao.load(categoria);
-        getSupportActionBar().setTitle(categori.getNombre());
+        nombreCategoria.setText(categori.getNombre());
+        //getSupportActionBar().setTitle(categori.getNombre());
         cargarLista();
     }
 
@@ -99,7 +117,7 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
     public void eliminarPalabra(final int x){
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(PalabraCategoriaActivity.this);
         dialogo1.setTitle("Importante!");
-        dialogo1.setMessage("¿Desea Eliminar esta categoria junto a las palabras?");
+        dialogo1.setMessage("¿Desea Eliminar esta palabra?");
         dialogo1.setCancelable(false);
         dialogo1.setPositiveButton("Acceptar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogo1, int id) {
@@ -178,33 +196,10 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
         DAOApp daoApp=new DAOApp();
         switch (view.getId()){
             case R.id.btnSiguiente:
-                cerrar=true;
-                String cate=etNombreCategoria.getText().toString();
-                if (cate.length()>0){
-                    if (categoria<0){
-                        CategoriaDao categoriaDao=daoApp.getCategoriaDao();
-                        Categoria categoria1=new Categoria();
-                        categoria1.setNombre(cate);
-                        categoria1.setDescripcion("");
-                        categoria1.setAdmin(false);
-                        categoria=categoriaDao.insert(categoria1);
-
-                    }else{
-                        CategoriaDao categoriaDao=daoApp.getCategoriaDao();
-                        Categoria categoria1=categoriaDao.load(categoria);
-                        categoria1.setNombre(cate);
-                        categoriaDao.update(categoria1);
-                    }
-                    getSupportActionBar().setTitle(cate);
-                    rlNuevaCategoria.setVisibility(View.GONE);
-                }else{
-                    showAlertDialog(PalabraCategoriaActivity.this,"Categoria","Debe introducir el nombre de al categoria",false);
-                }
+                siguieteCategoria();
                 break;
             case R.id.btnEliminarCategoria:
-
-                    eliminarCategoria();
-
+                eliminarCategoria();
                 break;
             case R.id.btnGuardarCategoria:
                 cerrar=false;
@@ -214,31 +209,80 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
                 etNombreCategoria.setText(categoria1.getNombre());
                 break;
             case R.id.btnAgregarPalabra:
-                String palab=etNuevaPalabra.getText().toString();
-                if (palab.length()>0){
-                    PalabraDao palabraDao=daoApp.getPalabraDao();
-                    if (edita<0){
-                        Palabra palabra1=new Palabra();
-                        palabra1.setNombre(palab);
-                        palabra1.setIdCategoriaPalabra(categoria);
-                        palabraDao.insert(palabra1);
-                    }else{
-                        edita=-1;
-                        palabra.setNombre(palab);
-                        palabraDao.update(palabra);
-                        btnEliminarAgregar.setVisibility(View.GONE);
-                    }
-                    cargarLista();
-                    etNuevaPalabra.setText("");
-                }else {
-                    showAlertDialog(PalabraCategoriaActivity.this,"Categoria","Debe introducir una palabra o frase",false);
-                }
+                agregarPalabra();
                 break;
             case R.id.btnCancelarAgregar:
                 edita=-1;
                 etNuevaPalabra.setText("");
                 btnEliminarAgregar.setVisibility(View.GONE);
                 break;
+            case R.id.btnConfigPalabra:
+                rlPalabra.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btnVolverMenuPalabra:
+                finish();
+                break;
+            case R.id.btnRegresarPalabra:
+                rlPalabra.setVisibility(View.GONE);
+                break;
+            case R.id.btnRegresarNueva:
+                if (cerrar){
+                    finish();
+                }else{
+                    rlNuevaCategoria.setVisibility(View.GONE);
+                    cerrar=true;
+                }
+                break;
+        }
+    }
+
+    public void siguieteCategoria(){
+        cerrar=true;
+        DAOApp daoApp=new DAOApp();
+        String cate=etNombreCategoria.getText().toString();
+        if (cate.length()>0){
+            if (categoria<0){
+                CategoriaDao categoriaDao=daoApp.getCategoriaDao();
+                Categoria categoria1=new Categoria();
+                categoria1.setNombre(cate);
+                categoria1.setDescripcion("");
+                categoria1.setAdmin(false);
+                categoria=categoriaDao.insert(categoria1);
+
+            }else{
+                CategoriaDao categoriaDao=daoApp.getCategoriaDao();
+                Categoria categoria1=categoriaDao.load(categoria);
+                categoria1.setNombre(cate);
+                categoriaDao.update(categoria1);
+            }
+            //getSupportActionBar().setTitle(cate);
+            nombreCategoria.setText(cate);
+            rlNuevaCategoria.setVisibility(View.GONE);
+        }else{
+            showAlertDialog(PalabraCategoriaActivity.this,"Categoria","Debe introducir el nombre de al categoria",false);
+        }
+    }
+
+    public void agregarPalabra(){
+        DAOApp daoApp=new DAOApp();
+        String palab=etNuevaPalabra.getText().toString();
+        if (palab.length()>0){
+            PalabraDao palabraDao=daoApp.getPalabraDao();
+            if (edita<0){
+                Palabra palabra1=new Palabra();
+                palabra1.setNombre(palab);
+                palabra1.setIdCategoriaPalabra(categoria);
+                palabraDao.insert(palabra1);
+            }else{
+                edita=-1;
+                palabra.setNombre(palab);
+                palabraDao.update(palabra);
+                btnEliminarAgregar.setVisibility(View.GONE);
+            }
+            cargarLista();
+            etNuevaPalabra.setText("");
+        }else {
+            showAlertDialog(PalabraCategoriaActivity.this,"Categoria","Debe introducir una palabra o frase",false);
         }
     }
 }

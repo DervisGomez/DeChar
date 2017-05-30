@@ -11,6 +11,57 @@
     tools:context="org.app.dechar.PalabraCategoriaActivity"
     android:orientation="vertical">
     <RelativeLayout
+        android:id="@+id/rlpalabraCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorFondo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <Button
+                android:id="@+id/btnGuardarCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/fondo5"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginBottom="@dimen/padding_16"
+                android:text="Editar Categoria"/>
+            <Button
+                android:id="@+id/btnEliminarCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/fondo5"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginBottom="@dimen/padding_16"
+                android:text="Eliminar Categoria"/>
+            <Button
+                android:id="@+id/btnVolverMenuPalabra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/fondo5"
+                android:layout_marginBottom="@dimen/padding_16"
+                android:text="Volver a mis categoria"/>
+            <Button
+                android:id="@+id/btnRegresarPalabra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/fondo5"
+                android:text="Regresar"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/rlNuevaCategoria"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -38,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Nombre Categoria"
                 android:textSize="@dimen/letra_20"
+                android:inputType="text"
                 android:id="@+id/etNombreCategoria" />
             <Button
                 android:id="@+id/btnSiguiente"
@@ -45,11 +97,38 @@
                 android:layout_height="wrap_content"
                 android:text="Siguiente"
                 android:textSize="@dimen/letra_18"
-                android:layout_marginTop="@dimen/padding_8"
+                android:layout_marginTop="@dimen/padding_16"
                 android:background="@color/colorAcertar"/>
+            <Button
+                android:id="@+id/btnRegresarNueva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Regresar"
+                android:textSize="@dimen/letra_18"
+                android:textColor="@color/colorFondo"
+                android:layout_marginTop="@dimen/padding_8"
+                android:background="@color/fondo5"/>
         </LinearLayout>
 
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_16">
+        <TextView
+            android:id="@+id/tvNombreCategorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Categorias Registradas"
+            android:textSize="@dimen/letra_20"
+            android:textColor="@color/fondo5" />
+        <Button
+            android:id="@+id/btnConfigPalabra"
+            android:layout_width="@dimen/icono"
+            android:layout_height="@dimen/icono"
+            android:background="@drawable/icon"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +140,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
+            android:inputType="text"
             android:paddingLeft="@dimen/padding_8"
             android:textSize="@dimen/letra_18"
             android:hint="Nueva Palabra"/>
@@ -93,27 +172,5 @@
         android:background="@color/fondo5"
         android:layout_height="0dp"
         android:layout_weight="1"></ListView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/padding_16">
-        <Button
-            android:id="@+id/btnEliminarCategoria"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorErrar"
-            android:layout_marginRight="2dp"
-            android:text="Eliminar"/>
-        <Button
-            android:id="@+id/btnGuardarCategoria"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorAcertar"
-            android:text="Editar"/>
-    </LinearLayout>
-
 
 </LinearLayout>

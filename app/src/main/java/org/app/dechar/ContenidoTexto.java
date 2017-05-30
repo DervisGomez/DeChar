@@ -26,6 +26,38 @@ public class ContenidoTexto {
         }
     }
 
+    public String[] getAyuda(int x){
+        String[] aa;
+        switch (x){
+            case 1:
+                aa= new String[]{"Tutorial de charadas biblica\n\nJugar es muy sencillo y devertido y aqui lo verás\n\ndesliza hacia la izquierda para leer más",
+                        "Lo primero que debes hacer es elegir una categoria\n\nluego pon el móvil o tablet en tu frente",
+                        "Seguidamente tu familia o amigos tienen que darte pistas de la palabra que esta en tu frente\n\nSi aciertas, inclina el dispositivo hacia arriba",
+                        "Si no logras acertar la palabra, tienes que pasar a otra ¡porque el tiempo se agota!\n\nPara hacerlo inclina el dispositivo hacia abajo",
+                        "¡Y eso es todo!\n\nAhora lo que tienes que hacer es divertirte y reta a tu familia y/o amigos"
+                };
+                return aa;
+            case 2:
+                aa= new String[]{"2Tutorial de charadas biblica\nJues es muy sencillo y devertido y aqui lo verás\n\ndesliza hacia la izquierda para leer más",
+                        "Lo primero que debes hacer es elegir una categoria\n\nluego pon el móvil o tablet en tu frente",
+                        "Seguidamente tu familia o amigos tienen que darte pistas de la palabra que esta en tu frente\n\nSi aciertas, inclina el dispositivo hacia arriba",
+                        "Si no logras acertar la palabra, tienes que pasar a otra ¡porque el tiempo se agota!\n\nPara hacerlo inclina el dispositivo hacia abajo",
+                        "¡Y eso es todo!\n\nAhora lo que tienes que hacer es divertirte y reta a tu familia y/o amigos"
+                };
+                return aa;
+            case 3:
+                aa= new String[]{"3Tutorial de charadas biblica\nJues es muy sencillo y devertido y aqui lo verás\n\ndesliza hacia la izquierda para leer más",
+                        "Lo primero que debes hacer es elegir una categoria\n\nluego pon el móvil o tablet en tu frente",
+                        "Seguidamente tu familia o amigos tienen que darte pistas de la palabra que esta en tu frente\n\nSi aciertas, inclina el dispositivo hacia arriba",
+                        "Si no logras acertar la palabra, tienes que pasar a otra ¡porque el tiempo se agota!\n\nPara hacerlo inclina el dispositivo hacia abajo",
+                        "¡Y eso es todo!\n\nAhora lo que tienes que hacer es divertirte y reta a tu familia y/o amigos"
+                };
+                return aa;
+            default:
+                return null;
+        }
+    }
+
     private void cargarCategorias(){
         DAOApp daoApp=new DAOApp();
         CategoriaDao categoriaDao=daoApp.getCategoriaDao();
@@ -37,9 +69,9 @@ public class ContenidoTexto {
         x++;
         categorias.add(new Categoria(x,"Lugares","",true));
         x++;
-        categorias.add(new Categoria(x,"Historias","",true));
+        categorias.add(new Categoria(x,"Palabras","",true));
         x++;
-        categorias.add(new Categoria(x,"Versiculos","",true));
+        categorias.add(new Categoria(x,"Actualo","",true));
         x++;
         categoriaDao.insertInTx(categorias);
     }
@@ -58,16 +90,8 @@ public class ContenidoTexto {
                 }
                 palabras=palabraDao.loadAll();
                 break;
-            case 1:
-                j=1;
-                palabras=palabraDao._queryCategoria_Palabra(j);
-                break;
-            case 2:
-                j=2;
-                palabras=palabraDao._queryCategoria_Palabra(j);
-                break;
-            case 3:
-                j=3;
+            case -1:
+                j=4;
                 palabras=palabraDao._queryCategoria_Palabra(j);
                 break;
             default:
@@ -488,6 +512,93 @@ public class ContenidoTexto {
         x++;
 
         palabras.add(new Palabra(x,"Canaan","",c));
+        x++;
+
+
+        c++;
+        palabras.add(new Palabra(x,"Orar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Predicar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Caminar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Cantar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Trabajar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Amar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Don","",c));//////////
+        x++;
+        palabras.add(new Palabra(x,"Alababanza","",c));
+        x++;
+        palabras.add(new Palabra(x,"Adoracion","",c));
+        x++;
+        palabras.add(new Palabra(x,"Verdad","",c));
+        x++;
+
+        palabras.add(new Palabra(x,"mandamiento","",c));
+        x++;
+        palabras.add(new Palabra(x,"Pecado","",c));
+        x++;
+        palabras.add(new Palabra(x,"Santa Cena","",c));
+        x++;
+        palabras.add(new Palabra(x,"Religioso","",c));
+        x++;
+        palabras.add(new Palabra(x,"Fe","",c));
+        x++;
+        palabras.add(new Palabra(x,"Misericordia","",c));
+        x++;
+        palabras.add(new Palabra(x,"Resurrección","",c));//////////
+        x++;
+        palabras.add(new Palabra(x,"Cruz","",c));
+        x++;
+        palabras.add(new Palabra(x,"Vida Eterna","",c));
+        x++;
+        palabras.add(new Palabra(x,"Bautizo","",c));
+        x++;
+
+        c++;
+        palabras.add(new Palabra(x,"Orar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Predicar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Caminar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Cantar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Trabajar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Amar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Regalar","",c));//////////
+        x++;
+        palabras.add(new Palabra(x,"Alababar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Adorar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Matar","",c));
+        x++;
+
+        palabras.add(new Palabra(x,"Mandar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Pecar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Cenar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Encontrar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Confiar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Cambiar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Resucitar","",c));//////////
+        x++;
+        palabras.add(new Palabra(x,"Crucificar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Enviar","",c));
+        x++;
+        palabras.add(new Palabra(x,"Bautizar","",c));
         x++;
 
         palabraDao.insertInTx(palabras);

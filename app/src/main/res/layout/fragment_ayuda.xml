@@ -7,6 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:id="@+id/fragment"
     tools:context="org.app.dechar.AyudaActivity$PlaceholderFragment">
 
     <ScrollView
@@ -21,6 +22,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:text="hola"
+                android:gravity="center_horizontal|center_vertical"
+                android:textSize="@dimen/letra_24"
+                android:textColor="@color/fondo5"
                 android:layout_weight="1"/>
         </LinearLayout>
     </ScrollView>
