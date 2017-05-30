@@ -5,6 +5,8 @@ import org.app.dechar.modelo.CategoriaDao;
 import org.app.dechar.modelo.DAOApp;
 import org.app.dechar.modelo.Palabra;
 import org.app.dechar.modelo.PalabraDao;
+import org.app.dechar.modelo.Tiempo;
+import org.app.dechar.modelo.TiempoDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,19 @@ public class ContenidoTexto {
             cargarCategorias();
             cargarPalabras();
         }
+    }
+
+    public int getTiempo(){
+        DAOApp daoApp=new DAOApp();
+        TiempoDao tiempoDao=daoApp.getTiempoDao();
+        List<Tiempo> tiempos=tiempoDao.loadAll();
+        int tiempo;
+        if (tiempos.size()>0){
+            tiempo=tiempos.get(0).getSegundos();
+        }else{
+            tiempo=60;
+        }
+        return tiempo;
     }
 
     public String[] getAyuda(int x){

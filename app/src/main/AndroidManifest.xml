@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.app.dechar">
 
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:name=".modelo.DAOApp"
         android:allowBackup="true"
@@ -27,7 +29,8 @@
         <activity
             android:name=".AyudaActivity"
             android:label="@string/title_activity_ayuda"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TiempoActivity"></activity>
     </application>
 
 </manifest>

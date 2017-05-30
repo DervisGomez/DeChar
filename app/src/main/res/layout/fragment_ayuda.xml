@@ -26,7 +26,17 @@
                 android:textSize="@dimen/letra_24"
                 android:textColor="@color/fondo5"
                 android:layout_weight="1"/>
+            <Button
+                android:id="@+id/btnVolverMenuAyuda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_16"
+                android:background="@color/colorPrimaryDark"
+                android:text="Volver al Menú"
+                android:textColor="@color/fondo5"
+                />
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
 

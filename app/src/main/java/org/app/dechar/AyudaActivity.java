@@ -1,5 +1,6 @@
 package org.app.dechar;
 
+import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -165,6 +167,16 @@ public class AyudaActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_ayuda, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             LinearLayout fragment=(LinearLayout)rootView.findViewById(R.id.fragment);
+            Button button=(Button)rootView.findViewById(R.id.btnVolverMenuAyuda);
+            button.setVisibility(View.GONE);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Vibrator v = (Vibrator) getActivity().getSystemService(VIBRATOR_SERVICE);
+                    v.vibrate(100);
+                    getActivity().finish();
+                }
+            });
             switch (getArguments().getInt(COLOR)){
                 case 0:
                     fragment.setBackgroundResource(R.color.colorFondo);
@@ -180,6 +192,7 @@ public class AyudaActivity extends AppCompatActivity {
                     break;
                 case 4:
                     fragment.setBackgroundResource(R.color.colorFondo);
+                    button.setVisibility(View.VISIBLE);
                     break;
             }
             textView.setText( getArguments().getString(AYUDA));

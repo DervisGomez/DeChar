@@ -1,9 +1,12 @@
 package org.app.dechar;
 
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class DesarrolladorActivity extends AppCompatActivity {
 
@@ -11,7 +14,16 @@ public class DesarrolladorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desarrollador);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
+        Button regresar=(Button)findViewById(R.id.btnRegresarDesarrollo);
+        regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                v.vibrate(100);
+                finish();
+            }
+        });
     }
 
     @Override

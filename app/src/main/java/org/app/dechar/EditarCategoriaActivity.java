@@ -3,6 +3,7 @@ package org.app.dechar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -84,6 +85,8 @@ public class EditarCategoriaActivity extends AppCompatActivity implements View.O
                 Categoria categoria = (Categoria) lvCategoria.getAdapter().getItem(pos);
                 Intent intent=new Intent(EditarCategoriaActivity.this,PalabraCategoriaActivity.class);
                 intent.putExtra("categoria",categoria.getId());
+                Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                v.vibrate(100);
                 startActivityForResult(intent,1);
             }
         });
@@ -108,6 +111,8 @@ public class EditarCategoriaActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View view) {
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        v.vibrate(100);
         switch (view.getId()){
             case R.id.btnRestablecer:
                 restablecerCategoria();

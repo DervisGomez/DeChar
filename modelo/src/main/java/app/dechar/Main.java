@@ -26,6 +26,10 @@ public class Main {
         categoria.addStringProperty("descripcion");
         categoria.addBooleanProperty("admin");
 
+        Entity tiempo=schema.addEntity("Tiempo");
+        tiempo.addIdProperty();
+        tiempo.addIntProperty("segundos");
+
         Property idCategoriaPalabra = palabra.addLongProperty("idCategoriaPalabra").getProperty();
         ToMany categoriaPalabra= categoria.addToMany(palabra, idCategoriaPalabra);
         categoriaPalabra.setName("Palabra");

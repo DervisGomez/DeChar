@@ -3,6 +3,7 @@ package org.app.dechar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -108,6 +109,8 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
     }
 
     public void editarLista(int x){
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        v.vibrate(100);
         etNuevaPalabra.setText(palabras.get(x).getNombre());
         palabra=palabras.get(x);
         edita=1;
@@ -115,6 +118,8 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
     }
 
     public void eliminarPalabra(final int x){
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        v.vibrate(100);
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(PalabraCategoriaActivity.this);
         dialogo1.setTitle("Importante!");
         dialogo1.setMessage("¿Desea Eliminar esta palabra?");
@@ -125,11 +130,14 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
                 PalabraDao palabraDao=daoApp.getPalabraDao();
                 palabraDao.delete(palabras.get(x));
                 cargarLista();
+                Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                v.vibrate(100);
             }
         });
         dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogo1, int id) {
-
+                Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                v.vibrate(100);
             }
         });
         dialogo1.show();
@@ -193,6 +201,8 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
 
     @Override
     public void onClick(View view) {
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        v.vibrate(100);
         DAOApp daoApp=new DAOApp();
         switch (view.getId()){
             case R.id.btnSiguiente:
@@ -204,6 +214,7 @@ public class PalabraCategoriaActivity extends AppCompatActivity implements View.
             case R.id.btnGuardarCategoria:
                 cerrar=false;
                 rlNuevaCategoria.setVisibility(View.VISIBLE);
+                rlPalabra.setVisibility(View.GONE);
                 CategoriaDao categoriaDao=daoApp.getCategoriaDao();
                 Categoria categoria1=categoriaDao.load(categoria);
                 etNombreCategoria.setText(categoria1.getNombre());

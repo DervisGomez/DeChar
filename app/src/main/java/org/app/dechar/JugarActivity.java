@@ -7,8 +7,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.AsyncTask;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,6 +37,7 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
     int xxx=0;
     int xx=6;
     boolean iniciar=false;
+    int tiempo=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,16 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
         int t=bolsa.getInt("x");
         ContenidoTexto contenidoTexto=new ContenidoTexto();
         texto=contenidoTexto.getTexto(t);
+        tiempo=contenidoTexto.getTiempo();
+        Button regresar=(Button)findViewById(R.id.btnMenuRegresar);
+        regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                v.vibrate(100);
+            }
+        });
         //txtSegundo.setText(String.valueOf(xxx));
         //cambiarTexto();
         //new MiTarea(1).execute();
@@ -137,6 +151,7 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
             curX = event.values[0];
             curY = event.values[1];
             curZ = event.values[2];
+            Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
             Calendar calendar=Calendar.getInstance();
             int x=calendar.getTime().getSeconds();
@@ -158,10 +173,10 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
                         if (xx>0){
                             xxx=x;
                             xx--;
-                            txtSegundo.setText("");
+                            txtSegundo.setText("Pon el dispositivo en tu frente");
                             txtTexto.setText(String.valueOf(xx));
                             if (xx==0){
-                                xx=59;
+                                xx=tiempo;
                                 iniciar=true;
                                 cambiarTexto();
                                 txtSegundo.setText(String.valueOf(xx));
@@ -175,14 +190,17 @@ public class JugarActivity extends AppCompatActivity implements SensorEventListe
             if (iniciar){
                 if (curZ>9){
                     if (!cambiar){
+                        v.vibrate(100);
                         textoCorrecto();
                     }
                 }else if(curZ<-7){
                     if (!cambiar){
+                        v.vibrate(100);
                         textoError();
                     }
                 }else if(curZ>-4&&curZ<6){
                     if (cambiar){
+                        //v.vibrate(200);
                         cambiarTexto();
                     }
 

@@ -11,6 +11,17 @@
     android:id="@+id/llFondo"
     tools:context="org.app.dechar.JugarActivity">
 
+    <Button
+        android:id="@+id/btnMenuRegresar"
+        android:layout_width="@dimen/tamaño_64"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Menú"
+        android:textColor="@color/fondo5"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,14 +31,17 @@
         android:textColor="#fff"
         android:paddingBottom="32dp"
         android:layout_centerVertical="true"
-        android:id="@+id/txtTexto"
-        />
+        android:id="@+id/txtTexto" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/letra_texto"
+        android:layout_marginRight="@dimen/letra_texto"
         android:text="Valor de Y"
         android:id="@+id/txtSegundo"
         android:textSize="@dimen/letra_segundo"
+        android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

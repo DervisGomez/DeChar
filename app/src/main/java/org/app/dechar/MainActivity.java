@@ -1,6 +1,7 @@
 package org.app.dechar;
 
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -121,6 +122,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        v.vibrate(100);
         switch (view.getId()){
             case R.id.btnTodos:
                 iniciarJuego(0);
@@ -177,14 +180,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 rlAyuda.setVisibility(View.GONE);
                 break;
             case R.id.btnAplicacionTiempo:
+                Intent intent5=new Intent(MainActivity.this,TiempoActivity.class);
+                startActivityForResult(intent5,1);
+                //rlAplicacion.setVisibility(View.GONE);
                 break;
             case R.id.btnAplicacionDesarrollador:
                 Intent intent1=new Intent(MainActivity.this,DesarrolladorActivity.class);
-                startActivity(intent1);
+                startActivityForResult(intent1,1);
+                //rlAplicacion.setVisibility(View.GONE);
                 break;
             case R.id.btnAplicacionRegresar:
                 rlAplicacion.setVisibility(View.GONE);
                 break;
         }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        rlAplicacion.setVisibility(View.GONE);
     }
 }

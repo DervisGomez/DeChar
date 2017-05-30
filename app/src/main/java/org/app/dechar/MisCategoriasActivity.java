@@ -1,6 +1,7 @@
 package org.app.dechar;
 
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,6 +67,8 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
                     Categoria categoria = (Categoria) lvCategorias.getAdapter().getItem(pos);
                     Intent intent=new Intent(MisCategoriasActivity.this,JugarActivity.class);
                     intent.putExtra("x",categoria.getId().intValue());
+                    Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                    v.vibrate(100);
                     startActivity(intent);
                 }
             });
@@ -94,6 +97,8 @@ public class MisCategoriasActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        v.vibrate(100);
         long x=-1;
         switch (view.getId()){
             case R.id.btnNuevaCategoria:

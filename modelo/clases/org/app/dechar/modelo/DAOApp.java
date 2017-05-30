@@ -11,6 +11,7 @@ public class DAOApp extends Application {
 
     static PalabraDao palabraDao;
     static CategoriaDao categoriaDao;
+    static TiempoDao tiempoDao;
 
     public PalabraDao getPalabraDao(){
         return palabraDao;
@@ -18,6 +19,10 @@ public class DAOApp extends Application {
 
     public CategoriaDao getCategoriaDao(){
         return categoriaDao;
+    }
+
+    public TiempoDao getTiempoDao(){
+        return tiempoDao;
     }
 
     @Override
@@ -29,5 +34,6 @@ public class DAOApp extends Application {
         DaoSession daoSession = daoMaster.newSession();
         categoriaDao=daoSession.getCategoriaDao();
         palabraDao=daoSession.getPalabraDao();
+        tiempoDao=daoSession.getTiempoDao();
     }
 }

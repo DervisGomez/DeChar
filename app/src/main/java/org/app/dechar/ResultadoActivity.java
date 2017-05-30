@@ -1,6 +1,7 @@
 package org.app.dechar;
 
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,7 +52,8 @@ public class ResultadoActivity extends AppCompatActivity {
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                v.vibrate(100);finish();
             }
         });
         btnReiniciar.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +62,8 @@ public class ResultadoActivity extends AppCompatActivity {
                 Intent intent=new Intent(ResultadoActivity.this,JugarActivity.class);
                 intent.putExtra("x",t);
                 startActivity(intent);
+                Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                v.vibrate(100);
                 finish();
             }
         });
